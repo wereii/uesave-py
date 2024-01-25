@@ -1,0 +1,22 @@
+[package]
+name = "uesave-py"
+version = "0.1.0+0.3.0"
+
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "uesave_py"
+crate-type = ["cdylib"]
+
+[features]
+default = ["pyo3/extension-module"]
+
+[dependencies]
+uesave = "0.3.0"
+pyo3 = { version = "0.20.2", features = ["abi3-py38"] }
+pyo3-filelike = "0.2.0"
+pythonize = "0.20.0"
+
+[dev-dependencies]
+clippy = "0.0.302"

@@ -1,0 +1,27 @@
+[build-system]
+requires = ["maturin>=1.4,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "uesave-py"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+dynamic = ["version"]
+
+[tool.maturin]
+profile = "release"
+strip = true
+
+[project.optional-dependencies]
+tests = [
+    "pytest>=7"
+]
+dev = [
+    "pytest",
+    "ruff",
+    "mypy",
+]
