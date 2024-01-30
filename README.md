@@ -7,6 +7,8 @@ Python library for editing Unreal Engine save files - PyO3 wrapper around [uesav
 
 ## Usage
 
+Minimal compatible python version is `python3.8`.
+
 `pip install uesave-py`
 
 **Reading Save Files**
@@ -25,11 +27,13 @@ except UesaveError as exc:
 print(save.header, save.root, save.extra)
 ```
 
-**Writin Save Files Back**
+**Writing Save Files**
 
 Not Implemented Yet ☹️
 
 ## Development
+
+In a way this is a simple PyO3 wrapper around uesave-rs library.
 
 ### Tests
 
@@ -37,18 +41,16 @@ Pythons `tox` is used to run pytest across multiple python versions.
 
 ## TODO
 
-- [ ] License (probs same as uesave-rs/MIT)
-- [ ] Expose uesave ParseError
+- License (probs same as uesave-rs/MIT)
+- Expose uesave ParseError
   - PyO3 currently does not have a facility to create and populate exceptions with instance fields.  
     So, this will require making our own PyErr and properly registering it with the python interface.
-- [ ] Improve transfering (Save) data from/to Python.
+- Improve transfering (Save) data from/to Python.
   Currently the whole uesave::save struct is immediatelly transferred into python, by itself it's OK.
   Except when/if implementing `write_save` it might get painfull really quick because of all the type coercion/conversion back to rust (and it must be correct).
 
-  Idea 1. - Keep the rust-side Save in some "getattr proxy class" (rust-side pyclass struct).
+  - Idea 1: Keep the rust-side Save in some "getattr proxy class" (rust-side pyclass struct).
   This would mean not transferring anything immediatelly but writing changes could be painfull again (capture setattr, properly coerce types, mutable fields are problem).
-
---- 
 
 ## Disclaimer
 
