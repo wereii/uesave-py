@@ -41,6 +41,7 @@ Pythons `tox` is used to run pytest across multiple python versions.
 
 ## TODO
 
+- CI: build the package first then use it in tests (so that we are not building twice)
 - License (probs same as uesave-rs/MIT)
 - Expose uesave ParseError
   - PyO3 currently does not have a facility to create and populate exceptions with instance fields.  
